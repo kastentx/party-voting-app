@@ -41,6 +41,46 @@ describe('application logic', () => {
       }))
     })
   
+    it('puts winner of current vote back to entries', () => {
+      const state = Map({
+        vote : Map({
+          pair : List.of('Hackers', '28 Days Later'),
+          tally : Map({
+            'Hackers' : 4,
+            '28 Days Later' : 2
+          })
+        }),
+        entries : List.of('Star Wars', 'Boogie Nights', 'Cars')
+      })
+      const nextState = next(state)
+      expect(nextState).to.equal(Map({
+        vote : Map({
+          pair : List.of('Star Wars', 'Boogie Nights')
+        }),
+        entries : List.of('Cars', 'Hackers')
+      }))
+    })
+
+    it('puts both from tied vote back to entries', () => {
+      const state = Map({
+        vote : Map({
+          pair : List.of('Hackers', '28 Days Later'),
+          tally : Map({
+            'Hackers' : 3,
+            '28 Days Later' : 3
+          })
+        }),
+        entries : List.of('Star Wars', 'Boogie Nights', 'Cars')
+      })
+      const nextState = next(state)
+      expect(nextState).to.equal(Map({
+        vote : Map({
+          pair : List.of('Star Wars', 'Boogie Nights')
+        }),
+        entries : List.of('Cars', 'Hackers', '28 Days Later')
+      }))
+    })
+  
   })
 
   describe('vote', () => {
@@ -91,3 +131,4 @@ describe('application logic', () => {
   })
 
 })
+

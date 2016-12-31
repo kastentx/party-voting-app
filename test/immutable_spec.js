@@ -25,7 +25,7 @@ describe('immutability', () => {
       return currentState.push(movie)
     }
 
-    it('is imutable', () => {
+    it('is immutable', () => {
       let state = List.of('Hackers', '28 Days Later')
       let nextState = addMovie(state, 'Star Wars')
 
@@ -38,20 +38,17 @@ describe('immutability', () => {
         'Hackers',
         '28 Days Later'
       ))
-    })
+    });
 
-  })
+  });
 
-  describe('a Tree', () => {
+  describe('a tree', () => {
 
     function addMovie(currentState, movie) {
-      return currentState.set(
-        'movies',
-        currentState.get('movies').push(movie)
-      )
+      return currentState.update('movies', movies => movies.push(movie))
     }
 
-    if('is immutable', () => {
+    it('is immutable', () => {
       let state = Map({
         movies: List.of('Hackers', '28 Days Later')
       })

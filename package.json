@@ -16,6 +16,9 @@
   "bugs": {
     "url": "https://github.com/kastentx/party-voting-app/issues"
   },
+  "babel": {
+    "presets": ["es2015"]
+  },
   "homepage": "https://github.com/kastentx/party-voting-app#readme",
   "devDependencies": {
     "babel-cli": "^6.18.0",

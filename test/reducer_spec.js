@@ -66,7 +66,7 @@ describe('reducer', () => {
     ]
     const finalState = actions.reduce(reducer, Map())
 
-    expect(finalState).to.equal.(fromJS({
+    expect(finalState).to.equal(fromJS({
       winner: 'Hackers'
     }))
   })
